@@ -13,7 +13,7 @@ resource "kubernetes_service" "books_www_ui" {
     }
     session_affinity = "ClientIP"
     port {
-      name = "nginx"
+      name = "books-www-ui"
       port        = 80
       protocol    = "TCP"
     }
@@ -88,7 +88,7 @@ resource "kubernetes_deployment" "books_www_ui" {
 
       spec {
         container {
-          image = "docker-registry.poorlythoughtout.com/olis-restful-json-api:${var.image_tag}"
+          image = "docker-registry.poorlythoughtout.com/books-www-ui:${var.image_tag}"
           name  = "books-www-ui"
         }
       }
