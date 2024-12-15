@@ -30,7 +30,7 @@ const keycloak = new Keycloak({
 });
 
 async function getData() {
-    const url = "https://books-api.paircoded.com/";
+    const url = "https://books-api.paircoded.com/items/1";
     try {
         const response = await fetch(url, {
             headers: {
