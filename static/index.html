@@ -30,7 +30,9 @@ const keycloak = new Keycloak({
 });
 
 try {
-    const authenticated = await keycloak.init();
+    const authenticated = await keycloak.init({
+        onLoad: 'login-required'
+    });
     if (authenticated) {
         console.log('User is authenticated');
     } else {
