@@ -28,7 +28,7 @@ pipeline {
         stage('Push image') {
             steps {
                 script {
-                    docker.withRegistry('https://docker-registry.poorlythoughtout.com', 'docker registry') {
+                    docker.withRegistry('https://docker-registry.poorlythoughtout.com', 'docker-registry') {
                         app.push("build-${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
