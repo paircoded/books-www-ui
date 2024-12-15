@@ -72,13 +72,16 @@ try {
 }
 
 const upload = (file) => {
+    const formData  = new FormData();
+    formData.append('file', file);
+
     fetch('https://books-api.paircoded.com/books/upload', {
         method: 'POST',
         headers: {
             accept: 'application/json',
             authorization: `Bearer ${keycloak.token}`,
         },
-        body: file
+        body: formData
     }).then(
         response => response.json() // if the response is a JSON object
     ).then(
