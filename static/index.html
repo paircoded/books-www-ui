@@ -4,20 +4,43 @@
 
 <link rel="stylesheet" href="css/main.css">
 
+<script type="module"> import keycloakJs from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.0.7/+esm' </script>
+
 <body>
 
-<header>books.paircoded.com</header>
+    <header>books.paircoded.com</header>
 
 <div id="main">
 
-    <article>Article</article>
+    <article></article>
 
-    <nav>Nav</nav>
+    <nav></nav>
 
-    <aside>Aside</aside>
+    <aside></aside>
 
 </div>
 
-<footer>Footer</footer>
+<footer></footer>
+
+<script>
+import Keycloak from 'keycloak-js';
+
+const keycloak = new Keycloak({
+    url: "https://accouts.paircoded.com",
+    realm: "paircoded",
+    clientId: "books-www-ui"
+});
+
+try {
+    const authenticated = await keycloak.init();
+    if (authenticated) {
+        console.log('User is authenticated');
+    } else {
+        console.log('User is not authenticated');
+    }
+} catch (error) {
+    console.error('Failed to initialize adapter:', error);
+}
+</script>
 
 </body>
