@@ -4,8 +4,6 @@
 
 <link rel="stylesheet" href="css/main.css">
 
-<script type="module"> import keycloakJs from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.0.7/+esm' </script>
-
 <body>
 
     <header>books.paircoded.com</header>
@@ -23,7 +21,8 @@
 <footer></footer>
 
 <script type="module">
-import Keycloak from 'keycloak-js';
+import keycloakJs from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.0.7/+esm'
+import Keycloak from keycloakJs;
 
 const keycloak = new Keycloak({
     url: "https://accouts.paircoded.com",
