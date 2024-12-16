@@ -1,15 +1,20 @@
-export class CurrentDate extends HTMLElement {
-    // The browser calls this method when the element is
-    // added to the DOM.
-    connectedCallback() {
-        // Create a Date object representing the current date.
-        const now = new Date();
 
-        // Format the date to a human-friendly string, and set the
-        // formatted date as the text content of this element.
-        this.textContent = now.toLocaleDateString();
+export class BookList extends HTMLElement {
+
+    connectedCallback() {
+        fetch(url, {
+            headers: {
+                accept: 'application/json',
+                authorization: `Bearer ${keycloak.token}`,
+            },
+        }).then(
+            response => response.json() // if the response is a JSON object
+        ).then(
+            success => this.textContent = success // Handle the success response object
+        ).catch(
+            error => console.log(error) // Handle the error response object
+        );
     }
 }
 
-// Register the CurrentDate component using the tag name <current-date>.
-customElements.define('current-date', CurrentDate);
+customElements.define('book-list', CurrentDate);

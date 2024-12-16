@@ -31,7 +31,7 @@
 
 <script type="module">
 import Keycloak from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.0.7/+esm';
-import {CurrentDate} from "./js/elements/book-list.js";
+import {BookList} from "./js/elements/book-list.js";
 
 const keycloak = new Keycloak({
     url: "https://accounts.paircoded.com",
@@ -39,25 +39,7 @@ const keycloak = new Keycloak({
     clientId: "books-www-ui"
 });
 
-async function getData() {
-    const url = "https://books-api.paircoded.com/books";
-    try {
-        const response = await fetch(url, {
-            headers: {
-                accept: 'application/json',
-                authorization: `Bearer ${keycloak.token}`,
-            }
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-
-        const json = await response.json();
-        console.log(json);
-    } catch (error) {
-        console.error(error.message);
-    }
-}
+BookList.keycloak = keycloak;
 
 
 try {
@@ -104,5 +86,5 @@ input.addEventListener('change', onSelectFile, false);
 
 </script>
 
-<current-date></current-date>
+<book-list/>
 </body>
