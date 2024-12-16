@@ -31,6 +31,7 @@
 
 <script type="module">
 import Keycloak from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.0.7/+esm';
+import {CurrentDate} from "./js/elements/book-list";
 
 const keycloak = new Keycloak({
     url: "https://accounts.paircoded.com",
@@ -99,23 +100,6 @@ const onSelectFile = () => upload(input.files[0]);
 // Add a listener on your input
 // It will be triggered when a file will be selected
 input.addEventListener('change', onSelectFile, false);
-
-
-class CurrentDate extends HTMLElement {
-    // The browser calls this method when the element is
-    // added to the DOM.
-    connectedCallback() {
-        // Create a Date object representing the current date.
-        const now = new Date();
-
-        // Format the date to a human-friendly string, and set the
-        // formatted date as the text content of this element.
-        this.textContent = now.toLocaleDateString();
-    }
-}
-
-// Register the CurrentDate component using the tag name <current-date>.
-customElements.define('current-date', CurrentDate);
 
 
 </script>
