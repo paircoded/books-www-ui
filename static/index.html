@@ -24,6 +24,7 @@
         </article>
     </aside>
 
+    <div id="book-list-container"></div>
 </div>
 
 <footer></footer>
@@ -38,7 +39,7 @@ const keycloak = new Keycloak({
 });
 
 async function getData() {
-    const url = "https://books-api.paircoded.com/items/1";
+    const url = "https://books-api.paircoded.com/books";
     try {
         const response = await fetch(url, {
             headers: {
